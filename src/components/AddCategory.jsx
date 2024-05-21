@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 
-export const AddCategory = () => {
-  const [inputValue, setInputValue] = useState("One Puch");
+export const AddCategory = ({ onNewCategory }) => {
+  const [inputValue, setInputValue] = useState("");
+
   const onInputChange = ({ target }) => {
     console.log("🚀 ", target.value);
     setInputValue(target.value);
@@ -11,11 +12,16 @@ export const AddCategory = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(inputValue);
+
+    if (inputValue.trim().length <= 1) return; // condición para insertar los caracteres mayor que uno
+
+    onNewCategory(inputValue.trim()); // insertar las nuevas categorias al input, desestructurando y con las props
+
+    setInputValue(""); // para borrar el input despues de insetar la palavra
   };
 
   return (
-    <form onSubmit={(event) => onSubmit(event)}>
+    <form onSubmit={onSubmit}>
       <input
         type="text"
         placeholder="Buscar Gifs"

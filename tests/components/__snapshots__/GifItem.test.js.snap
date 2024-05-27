@@ -9,6 +9,9 @@ exports[`Pruebas en <GifItem/> Debe de hacer match con el snapshot 1`] = `
       alt="Monalisa"
       src="https://monalisatest/monalisa.jpg"
     />
+    <p>
+      Monalisa
+    </p>
   </div>
 </div>
 `;

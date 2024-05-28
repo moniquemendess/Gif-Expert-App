@@ -6,7 +6,6 @@ export const AddCategory = ({ onNewCategory }) => {
   const [inputValue, setInputValue] = useState("");
 
   const onInputChange = ({ target }) => {
-    console.log("🚀 ", target.value);
     setInputValue(target.value);
   };
 
@@ -17,11 +16,11 @@ export const AddCategory = ({ onNewCategory }) => {
 
     onNewCategory(inputValue.trim()); // insertar las nuevas categorias al input, desestructurando y con las props
 
-    setInputValue(""); // para borrar el input despues de insetar la palavra
+    setInputValue(""); // limpar la caja de texto
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} aria-label="form">
       <input
         type="text"
         placeholder="Buscar Gifs"

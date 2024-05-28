@@ -38,4 +38,20 @@ describe("Prueba en <addCategory/>", () => {
     expect(onNewCategory).toHaveBeenCalledTimes(1); // se la funcion fue llamada una vez
     expect(onNewCategory).toHaveBeenCalledWith(inputValue); // avaluando se fue llamado con el valor de la caja de texto
   });
+
+  test("no debe de llamar el onNewCategory si el input esta vacio ", () => {
+    const onNewCategory = jest.fn();
+
+    render(<AddCategory onNewCategory={onNewCategory} />);
+
+    const form = screen.getByRole("form");
+
+    fireEvent.submit(form);
+
+    // puede hacer la evaluación de dos maneiras para garantir que la funcion no fue llamada
+    //01
+    expect(onNewCategory).toHaveBeenCalledTimes(0); // con el cero garantiza que no fue llamado
+    //02
+    expect(onNewCategory).not.toHaveBeenCalled(); // que no ya sido llamada
+  });
 });
